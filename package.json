@@ -21,7 +21,7 @@
     "noAnalyze": true,
     "repository": {
         "type": "git",
-        "url": "ssh://git@github.com:pip-services-users/pip-clients-emaildelivery-node.git"
+        "url": "ssh://git@github.com:pip-services-infrastructure/pip-clients-emaildelivery-node.git"
     },
     "license": "MIT",
     "engines": {

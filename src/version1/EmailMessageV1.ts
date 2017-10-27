@@ -4,7 +4,7 @@ export class EmailMessageV1 {
     public bcc?: string;
     public to?: string;
     public reply_to?: string;
-    public subject?: string;
-    public text?: string;
-    public html?: string;
+    public subject?: any;
+    public text?: any;
+    public html?: any;
 }

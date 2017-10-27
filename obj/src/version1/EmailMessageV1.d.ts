@@ -4,7 +4,7 @@ export declare class EmailMessageV1 {
     bcc?: string;
     to?: string;
     reply_to?: string;
-    subject?: string;
-    text?: string;
-    html?: string;
+    subject?: any;
+    text?: any;
+    html?: any;
 }

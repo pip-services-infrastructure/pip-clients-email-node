@@ -8,14 +8,14 @@ and provides high-level API to access the microservice for simple and productive
 * [Getting started](#get_started)
 * [EmailMessageV1 class](#class2)
 * [EmailRecipientV1 class](#class3)
-* [IEmailDeliveryClientV1 interface](#interface)
+* [IEmailClientV1 interface](#interface)
     - [sendMessage()](#operation9)
     - [sendMessageToRecipient()](#operation10)
     - [sendMessageToRecipient()](#operation11)
-* [EmailDeliveryHttpClientV1 class](#client_http)
-* [EmailDeliverySenecaClientV1 class](#client_seneca)
-* [EmailDeliveryDirectClientV1 class](#client_direct)
-* [EmailDeliveryNullClientV1 class](#client_null)
+* [EmailHttpClientV1 class](#client_http)
+* [EmailSenecaClientV1 class](#client_seneca)
+* [EmailDirectClientV1 class](#client_direct)
+* [EmailNullClientV1 class](#client_null)
 * [Message Templates](#templates)
 
 ## <a name="install"></a> Installation
@@ -27,7 +27,7 @@ To work with the client SDK add dependency into package.json file:
     ...
     "dependencies": {
         ....
-        "pip-clients-emaildelivery-node": "^1.0.*",
+        "pip-clients-email-node": "^1.0.*",
         ...
     }
 }
@@ -49,7 +49,7 @@ This is a simple example on how to work with the microservice using REST client:
 
 ```javascript
 // Get Client SDK for Version 1 
-var sdk = new require('pip-clients-emaildelivery-node');
+var sdk = new require('pip-clients-email-node');
 
 // Client configuration
 var config = {
@@ -68,7 +68,7 @@ var config = {
 };
 
 // Create the client instance
-var client = sdk.EmailDeliveryHttpClientV1(config);
+var client = sdk.EmailHttpClientV1(config);
 
 // Open client connection to the microservice
 client.open(null, function(err) {
@@ -90,7 +90,7 @@ client.open(null, function(err) {
         null,
         function (err) {
             if (err) console.error(err);
-            else console.log('EmailDelivery message was successfully sent');
+            else console.log('Email message was successfully sent');
         }
     );
 
@@ -108,7 +108,7 @@ client.open(null, function(err) {
         },
         function (err) {
             if (err) console.error(err);
-            else console.log('EmailDelivery message was successfully sent');
+            else console.log('Email message was successfully sent');
         }
     );
     
@@ -142,14 +142,14 @@ tries to restore them from email settings.
 - email: string - (optional) primary user email
 - language: string - (optional) user preferred language
 
-## <a name="interface"></a> IEmailDeliveryClientV1 interface
+## <a name="interface"></a> IEmailClientV1 interface
 
-If you are using Typescript, you can use IEmailDeliveryClientV1 as a common interface across all client implementations. 
-If you are using plain Javascript, you shall not worry about IEmailDeliveryClient interface. You can just expect that
+If you are using Typescript, you can use IEmailClientV1 as a common interface across all client implementations. 
+If you are using plain Javascript, you shall not worry about IEmailClient interface. You can just expect that
 all methods defined in this interface are implemented by all client classes.
 
 ```javascript
-interface IEmailDeliveryClientV1 {
+interface IEmailClientV1 {
     sendMessage(correlationId, message, parameters, callback);
     sendMessageToRecipient(correlationId, recipient, message, parameters, callback);
     sendMessageToRecipients(correlationId, recipients, message, parameters, callback);
@@ -192,12 +192,12 @@ Sends email message to multiple recipients
   - err: Error - occured error or null for success
 
 
-## <a name="client_http"></a> EmailDeliveryHttpClientV1 class
+## <a name="client_http"></a> EmailHttpClientV1 class
 
-EmailDeliveryHttpClientV1 is a client that implements HTTPprotocol
+EmailHttpClientV1 is a client that implements HTTPprotocol
 
 ```javascript
-class EmailDeliveryHttpClientV1 extends CommandableHttpClient implements IEmailDeliveryClientV1 {
+class EmailHttpClientV1 extends CommandableHttpClient implements IEmailClientV1 {
     constructor(config?: any);
     setReferences(refs);
     open(correlationId, callback);
@@ -215,12 +215,12 @@ class EmailDeliveryHttpClientV1 extends CommandableHttpClient implements IEmailD
   - host: string - IP address/hostname binding (default is '0.0.0.0')
   - port: number - HTTP port number
 
-## <a name="client_seneca"></a> EmailDeliverySenecaClientV1 class
+## <a name="client_seneca"></a> EmailSenecaClientV1 class
 
-EmailDeliverySenecaClientV1 is a client that implements Seneca protocol
+EmailSenecaClientV1 is a client that implements Seneca protocol
 
 ```javascript
-class EmailDeliverySenecaClientV1 extends CommandableSenecaClient implements IEmailDeliveryClientV1 {
+class EmailSenecaClientV1 extends CommandableSenecaClient implements IEmailClientV1 {
     constructor(config?: any);        
     setReferences(refs);
     open(correlationId, callback);
@@ -238,13 +238,13 @@ class EmailDeliverySenecaClientV1 extends CommandableSenecaClient implements IEm
   - host: string - IP address/hostname binding (default is '0.0.0.0')
   - port: number - Seneca port number
 
-## <a name="client_direct"></a> EmailDeliveryDirectClientV1 class
+## <a name="client_direct"></a> EmailDirectClientV1 class
 
-EmailDeliveryDirectClientV1 is a client that calls controller from the same container.
+EmailDirectClientV1 is a client that calls controller from the same container.
 It is intended to be used in monolythic deployments.
 
 ```javascript
-class EmailDeliveryDirectClientV1 extends DirectClient implements IEmailDeliveryClientV1 {
+class EmailDirectClientV1 extends DirectClient implements IEmailClientV1 {
     constructor();
     setReferences(refs);
     open(correlationId, callback);
@@ -255,13 +255,13 @@ class EmailDeliveryDirectClientV1 extends DirectClient implements IEmailDelivery
 }
 ```
 
-## <a name="client_null"></a> EmailDeliveryNullClientV1 class
+## <a name="client_null"></a> EmailNullClientV1 class
 
-EmailDeliveryNullClientV1 is a dummy client that mimics the real client but doesn't call a microservice. 
+EmailNullClientV1 is a dummy client that mimics the real client but doesn't call a microservice. 
 It can be useful in testing scenarios to cut dependencies on external microservices.
 
 ```javascript
-class EmailDeliveryNullClientV1 implements IEmailDeliveryClientV1 {
+class EmailNullClientV1 implements IEmailClientV1 {
     constructor();
     sendMessage(correlationId, message, parameters, callback);
     sendMessageToRecipient(correlationId, recipient, message, parameters, callback);

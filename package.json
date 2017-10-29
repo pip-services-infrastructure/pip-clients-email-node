@@ -1,8 +1,8 @@
 {
-    "name": "pip-clients-emaildelivery-node",
+    "name": "pip-clients-email-node",
     "version": "1.0.0",
     "author": "Conceptual Vision Consulting LLC",
-    "description": "Node.js client sdk for pip-services-emaildelivery microservice",
+    "description": "Node.js client sdk for pip-services-email microservice",
     "contributors": [
         {
             "name": "Sergey Seroukhov",
@@ -21,7 +21,7 @@
     "noAnalyze": true,
     "repository": {
         "type": "git",
-        "url": "ssh://git@github.com:pip-services-infrastructure/pip-clients-emaildelivery-node.git"
+        "url": "ssh://git@github.com:pip-services-infrastructure/pip-clients-email-node.git"
     },
     "license": "MIT",
     "engines": {
@@ -53,6 +53,6 @@
         "matcha": "*",
         "mocha": "*",
         "aws-sdk": "*",
-        "pip-services-emaildelivery-node": "git+ssh://git@github.com:pip-services-infrastructure/pip-services-emaildelivery-node.git"
+        "pip-services-email-node": "git+ssh://git@github.com:pip-services-infrastructure/pip-services-email-node.git"
     }
 }

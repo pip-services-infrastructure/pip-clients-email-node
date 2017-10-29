@@ -1,2 +1,2 @@
 export * from './version1';
-export { EmailDeliveryClientFactory } from './build/EmailDeliveryClientFactory';
+export { EmailClientFactory } from './build/EmailClientFactory';

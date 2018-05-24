@@ -10,7 +10,7 @@ export class EmailHttpClientV1 extends CommandableHttpClient implements IEmailCl
     private _defaultParameters: ConfigParams;
 
     constructor(config?: any) {
-        super('email');
+        super('v1/email');
 
         let thisConfig = ConfigParams.fromValue(config);
         this._defaultParameters = thisConfig.getSection('parameters');

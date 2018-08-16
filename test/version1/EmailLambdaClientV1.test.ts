@@ -6,25 +6,26 @@ import { EmailClientFixtureV1 } from './EmailClientFixtureV1';
 import { EmailLambdaClientV1 } from '../../src/version1/EmailLambdaClientV1';
 
 suite('EmailLambdaClient', ()=> {
-    let awsAccessId = process.env['AWS_ACCESS_ID'];
-    let awsAccessKey = process.env['AWS_ACCESS_KEY'];
-    let awsArn = process.env['AWS_ARN'];
+    let AWS_LAMDBA_ARN = process.env["AWS_LAMDBA_ARN"] || "";
+    let AWS_ACCESS_ID = process.env["AWS_ACCESS_ID"] || "";
+    let AWS_ACCESS_KEY = process.env["AWS_ACCESS_KEY"] || "";
 
-    // Skip if connection is not configured
-    if (awsAccessId == null || awsArn == null) return;
+    if (!AWS_LAMDBA_ARN || !AWS_ACCESS_ID || !AWS_ACCESS_KEY)
+        return;
+
+    let config = ConfigParams.fromTuples(
+        'connection.protocol', 'aws',
+        'connection.arn', AWS_LAMDBA_ARN,
+        'credential.access_id', AWS_ACCESS_ID,
+        'credential.access_key', AWS_ACCESS_KEY
+    )
 
     let client: EmailLambdaClientV1;
     let fixture: EmailClientFixtureV1;
 
     setup((done) => {
         client = new EmailLambdaClientV1();
-
-        client.configure(ConfigParams.fromTuples(
-            'connection.protocol', 'aws',
-            'connection.arn', awsArn,
-            'credential.access_id', awsAccessId,
-            'credential.access_key', awsAccessKey
-        ));
+        client.configure(config);
 
         fixture = new EmailClientFixtureV1(client);
 

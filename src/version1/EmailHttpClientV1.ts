@@ -1,6 +1,6 @@
 import { ConfigParams } from 'pip-services-commons-node';
 import { IReferences } from 'pip-services-commons-node';
-import { CommandableHttpClient } from 'pip-services-net-node';
+import { CommandableHttpClient } from 'pip-services-rpc-node';
 
 import { EmailMessageV1 } from './EmailMessageV1';
 import { EmailRecipientV1 } from './EmailRecipientV1';

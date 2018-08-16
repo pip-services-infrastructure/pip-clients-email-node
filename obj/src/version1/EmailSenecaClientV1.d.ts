@@ -1,5 +1,5 @@
 import { ConfigParams } from 'pip-services-commons-node';
-import { CommandableSenecaClient } from 'pip-services-net-node';
+import { CommandableSenecaClient } from 'pip-services-seneca-node';
 import { EmailMessageV1 } from './EmailMessageV1';
 import { EmailRecipientV1 } from './EmailRecipientV1';
 import { IEmailClientV1 } from './IEmailClientV1';

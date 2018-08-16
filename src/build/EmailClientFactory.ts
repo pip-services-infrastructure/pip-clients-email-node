@@ -1,5 +1,5 @@
 import { Descriptor } from 'pip-services-commons-node';
-import { Factory } from 'pip-services-commons-node';
+import { Factory } from 'pip-services-components-node';
 
 import { EmailNullClientV1 } from '../version1/EmailNullClientV1';
 import { EmailDirectClientV1 } from '../version1/EmailDirectClientV1';

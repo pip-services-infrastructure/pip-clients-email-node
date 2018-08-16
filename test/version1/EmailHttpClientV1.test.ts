@@ -4,7 +4,7 @@ let async = require('async');
 import { Descriptor } from 'pip-services-commons-node';
 import { ConfigParams } from 'pip-services-commons-node';
 import { References } from 'pip-services-commons-node';
-import { ConsoleLogger } from 'pip-services-commons-node';
+import { ConsoleLogger } from 'pip-services-components-node';
 
 import { EmailController } from 'pip-services-email-node';
 import { EmailHttpServiceV1 } from 'pip-services-email-node';
@@ -32,7 +32,7 @@ suite('EmailHttpClientV1', ()=> {
         service.configure(httpConfig);
 
         let references: References = References.fromTuples(
-            new Descriptor('pip-services-commons', 'logger', 'console', 'default', '1.0'), logger,
+            new Descriptor('pip-services', 'logger', 'console', 'default', '1.0'), logger,
             new Descriptor('pip-services-email', 'controller', 'default', 'default', '1.0'), controller,
             new Descriptor('pip-services-email', 'service', 'http', 'default', '1.0'), service
         );

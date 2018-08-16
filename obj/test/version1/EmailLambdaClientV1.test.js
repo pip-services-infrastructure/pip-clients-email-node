@@ -5,17 +5,17 @@ const pip_services_commons_node_1 = require("pip-services-commons-node");
 const EmailClientFixtureV1_1 = require("./EmailClientFixtureV1");
 const EmailLambdaClientV1_1 = require("../../src/version1/EmailLambdaClientV1");
 suite('EmailLambdaClient', () => {
-    let awsAccessId = process.env['AWS_ACCESS_ID'];
-    let awsAccessKey = process.env['AWS_ACCESS_KEY'];
-    let awsArn = process.env['AWS_ARN'];
-    // Skip if connection is not configured
-    if (awsAccessId == null || awsArn == null)
+    let AWS_LAMDBA_ARN = process.env["AWS_LAMDBA_ARN"] || "";
+    let AWS_ACCESS_ID = process.env["AWS_ACCESS_ID"] || "";
+    let AWS_ACCESS_KEY = process.env["AWS_ACCESS_KEY"] || "";
+    if (!AWS_LAMDBA_ARN || !AWS_ACCESS_ID || !AWS_ACCESS_KEY)
         return;
+    let config = pip_services_commons_node_1.ConfigParams.fromTuples('connection.protocol', 'aws', 'connection.arn', AWS_LAMDBA_ARN, 'credential.access_id', AWS_ACCESS_ID, 'credential.access_key', AWS_ACCESS_KEY);
     let client;
     let fixture;
     setup((done) => {
         client = new EmailLambdaClientV1_1.EmailLambdaClientV1();
-        client.configure(pip_services_commons_node_1.ConfigParams.fromTuples('connection.protocol', 'aws', 'connection.arn', awsArn, 'credential.access_id', awsAccessId, 'credential.access_key', awsAccessKey));
+        client.configure(config);
         fixture = new EmailClientFixtureV1_1.EmailClientFixtureV1(client);
         client.open(null, done);
     });

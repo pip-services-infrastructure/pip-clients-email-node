@@ -1,6 +1,6 @@
-import { ConfigParams } from 'pip-services-commons-node';
-import { Descriptor } from 'pip-services-commons-node';
-import { DirectClient } from 'pip-services-rpc-node';
+import { ConfigParams } from 'pip-services3-commons-node';
+import { Descriptor } from 'pip-services3-commons-node';
+import { DirectClient } from 'pip-services3-rpc-node';
 
 import { IEmailClientV1 } from './IEmailClientV1';
 import { EmailMessageV1 } from './EmailMessageV1';

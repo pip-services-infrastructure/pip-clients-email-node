@@ -1,6 +1,6 @@
 let process = require('process');
 
-import { ConfigParams } from 'pip-services-commons-node';
+import { ConfigParams } from 'pip-services3-commons-node';
 
 import { EmailClientFixtureV1 } from './EmailClientFixtureV1';
 import { EmailLambdaClientV1 } from '../../src/version1/EmailLambdaClientV1';

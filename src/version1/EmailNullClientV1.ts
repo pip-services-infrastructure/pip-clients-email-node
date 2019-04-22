@@ -1,4 +1,4 @@
-import { ConfigParams } from 'pip-services-commons-node';
+import { ConfigParams } from 'pip-services3-commons-node';
 
 import { IEmailClientV1 } from './IEmailClientV1';
 import { EmailMessageV1 } from './EmailMessageV1';

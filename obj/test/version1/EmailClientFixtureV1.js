@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 let _ = require('lodash');
 let async = require('async');
 let assert = require('chai').assert;
-const pip_services_commons_node_1 = require("pip-services-commons-node");
+const pip_services3_commons_node_1 = require("pip-services3-commons-node");
 class EmailClientFixtureV1 {
     constructor(client) {
         this._client = client;
@@ -15,7 +15,7 @@ class EmailClientFixtureV1 {
             text: '{{text}}',
             html: '<p>{{text}}</p>'
         };
-        let parameters = pip_services_commons_node_1.ConfigParams.fromTuples('subject', 'Test Email To Address', 'text', 'This is just a test');
+        let parameters = pip_services3_commons_node_1.ConfigParams.fromTuples('subject', 'Test Email To Address', 'text', 'This is just a test');
         this._client.sendMessage(null, message, parameters, (err) => {
             assert.isNull(err);
             done();

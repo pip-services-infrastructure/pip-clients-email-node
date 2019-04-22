@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 let process = require('process');
-const pip_services_commons_node_1 = require("pip-services-commons-node");
+const pip_services3_commons_node_1 = require("pip-services3-commons-node");
 const EmailClientFixtureV1_1 = require("./EmailClientFixtureV1");
 const EmailLambdaClientV1_1 = require("../../src/version1/EmailLambdaClientV1");
 suite('EmailLambdaClient', () => {
@@ -10,7 +10,7 @@ suite('EmailLambdaClient', () => {
     let AWS_ACCESS_KEY = process.env["AWS_ACCESS_KEY"] || "";
     if (!AWS_LAMDBA_ARN || !AWS_ACCESS_ID || !AWS_ACCESS_KEY)
         return;
-    let config = pip_services_commons_node_1.ConfigParams.fromTuples('connection.protocol', 'aws', 'connection.arn', AWS_LAMDBA_ARN, 'credential.access_id', AWS_ACCESS_ID, 'credential.access_key', AWS_ACCESS_KEY);
+    let config = pip_services3_commons_node_1.ConfigParams.fromTuples('connection.protocol', 'aws', 'connection.arn', AWS_LAMDBA_ARN, 'credential.access_id', AWS_ACCESS_ID, 'credential.access_key', AWS_ACCESS_KEY);
     let client;
     let fixture;
     setup((done) => {

@@ -5,3 +5,5 @@ export { EmailHttpClientV1 } from './EmailHttpClientV1';
 export { EmailLambdaClientV1 } from './EmailLambdaClientV1';
 export { EmailDirectClientV1 } from './EmailDirectClientV1';
 export { EmailNullClientV1 } from './EmailNullClientV1';
+export { EmailCommandableGrpcClientV1 } from './EmailCommandableGrpcClientV1';
+export { EmailGrpcClientV1 } from './EmailGrpcClientV1';

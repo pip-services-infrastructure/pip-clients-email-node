@@ -15,7 +15,7 @@ suite('EmailDirectClientV1', () => {
     suiteSetup((done) => {
         let logger = new pip_services3_components_node_1.ConsoleLogger();
         let controller = new pip_services_email_node_1.EmailController();
-        controller.configure(new pip_services3_commons_node_2.ConfigParams());
+        controller.configure(pip_services3_commons_node_2.ConfigParams.fromTuples("options.disabled", true));
         let references = pip_services3_commons_node_3.References.fromTuples(new pip_services3_commons_node_1.Descriptor('pip-services', 'logger', 'console', 'default', '1.0'), logger, new pip_services3_commons_node_1.Descriptor('pip-services-email', 'controller', 'default', 'default', '1.0'), controller);
         controller.setReferences(references);
         client = new EmailDirectClientV1_1.EmailDirectClientV1();
@@ -33,4 +33,4 @@ suite('EmailDirectClientV1', () => {
         fixture.testSendEmailToRecipients(done);
     });
 });
-//# sourceMappingURL=EmailDirectClientV1.js.map
+//# sourceMappingURL=EmailDirectClientV1.test.js.map

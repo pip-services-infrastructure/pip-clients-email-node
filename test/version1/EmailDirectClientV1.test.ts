@@ -18,7 +18,9 @@ suite('EmailDirectClientV1', ()=> {
     suiteSetup((done) => {
         let logger = new ConsoleLogger();
         let controller = new EmailController();
-        controller.configure(new ConfigParams());
+        controller.configure(ConfigParams.fromTuples(
+            "options.disabled", true
+        ));
 
         let references: References = References.fromTuples(
             new Descriptor('pip-services', 'logger', 'console', 'default', '1.0'), logger,

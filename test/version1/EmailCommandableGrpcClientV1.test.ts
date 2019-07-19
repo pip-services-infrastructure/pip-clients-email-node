@@ -7,9 +7,9 @@ import { References } from 'pip-services3-commons-node';
 import { ConsoleLogger } from 'pip-services3-components-node';
 
 import { EmailController } from 'pip-services-email-node';
-import { EmailHttpServiceV1 } from 'pip-services-email-node';
+import { EmailCommandableGrpcServiceV1 } from 'pip-services-email-node';
 import { IEmailClientV1 } from '../../src/version1/IEmailClientV1';
-import { EmailHttpClientV1 } from '../../src/version1/EmailHttpClientV1';
+import { EmailCommandableGrpcClientV1 } from '../../src/version1/EmailCommandableGrpcClientV1';
 import { EmailClientFixtureV1 } from './EmailClientFixtureV1';
 
 var httpConfig = ConfigParams.fromTuples(
@@ -18,9 +18,9 @@ var httpConfig = ConfigParams.fromTuples(
     "connection.port", 3000
 );
 
-suite('EmailHttpClientV1', ()=> {
-    let service: EmailHttpServiceV1;
-    let client: EmailHttpClientV1;
+suite('EmailCommandableGrpcClientV1', ()=> {
+    let service: EmailCommandableGrpcServiceV1;
+    let client: EmailCommandableGrpcClientV1;
     let fixture: EmailClientFixtureV1;
 
     suiteSetup((done) => {
@@ -30,18 +30,18 @@ suite('EmailHttpClientV1', ()=> {
             "options.disabled", true
         ));
 
-        service = new EmailHttpServiceV1();
+        service = new EmailCommandableGrpcServiceV1();
         service.configure(httpConfig);
 
         let references: References = References.fromTuples(
             new Descriptor('pip-services', 'logger', 'console', 'default', '1.0'), logger,
             new Descriptor('pip-services-email', 'controller', 'default', 'default', '1.0'), controller,
-            new Descriptor('pip-services-email', 'service', 'http', 'default', '1.0'), service
+            new Descriptor('pip-services-email', 'service', 'commandable-grpc', 'default', '1.0'), service
         );
         controller.setReferences(references);
         service.setReferences(references);
 
-        client = new EmailHttpClientV1();
+        client = new EmailCommandableGrpcClientV1();
         client.setReferences(references);
         client.configure(httpConfig);
 

@@ -19,6 +19,7 @@ class EmailClientFactory extends pip_services3_components_node_1.Factory {
         this.registerAsType(EmailClientFactory.GrpcClientV1Descriptor, EmailGrpcClientV1_1.EmailGrpcClientV1);
     }
 }
+exports.EmailClientFactory = EmailClientFactory;
 EmailClientFactory.Descriptor = new pip_services3_commons_node_1.Descriptor('pip-services-email', 'factory', 'default', 'default', '1.0');
 EmailClientFactory.NullClientV1Descriptor = new pip_services3_commons_node_1.Descriptor('pip-services-email', 'client', 'null', 'default', '1.0');
 EmailClientFactory.DirectClientV1Descriptor = new pip_services3_commons_node_1.Descriptor('pip-services-email', 'client', 'direct', 'default', '1.0');
@@ -26,5 +27,4 @@ EmailClientFactory.HttpClientV1Descriptor = new pip_services3_commons_node_1.Des
 EmailClientFactory.LambdaClientV1Descriptor = new pip_services3_commons_node_1.Descriptor('pip-services-email', 'client', 'lambda', 'default', '1.0');
 EmailClientFactory.CommandableGrpcClientV1Descriptor = new pip_services3_commons_node_1.Descriptor('pip-services-email', 'client', 'commandable-grpc', 'default', '1.0');
 EmailClientFactory.GrpcClientV1Descriptor = new pip_services3_commons_node_1.Descriptor('pip-services-email', 'client', 'grpc', 'default', '1.0');
-exports.EmailClientFactory = EmailClientFactory;
 //# sourceMappingURL=EmailClientFactory.js.map

@@ -1,6 +1,6 @@
 {
     "name": "pip-clients-email-node",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "author": "Conceptual Vision Consulting LLC",
     "description": "Node.js client sdk for pip-services-email microservice",
     "contributors": [
@@ -56,6 +56,6 @@
         "chai": "*",
         "mocha": "*",
         "aws-sdk": "*",
-        "pip-services-email-node": "git+ssh://git@github.com:pip-services-infrastructure/pip-services-email-node.git"
+        "pip-services-email-node": "^1.0.1"
     }
 }
